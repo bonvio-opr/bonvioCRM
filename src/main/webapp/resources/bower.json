@@ -1,0 +1,22 @@
+{
+  "name": "resources",
+  "version": "0.0.0",
+  "homepage": "https://github.com/bonvio-opr/staff",
+  "authors": [
+    "milomory <milomory@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.4",
+    "font-awesome": "~4.3.0"
+  }
+}

@@ -1,0 +1,21 @@
+
+<div class="container">
+
+    <form class="form-signin" action="j_spring_security_check" method="POST">
+        <h2 class="form-signin-heading">Sing in...</h2>
+        <label for="username" class="sr-only">Login</label>
+        <input type="text" id="username" class="form-control" placeholder="John" required="" autofocus="" name="j_username">
+        <label for="inputPassword" class="sr-only">Пароль</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="password" required="" name="j_password">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"
+                       value="remember-me"
+                       name="_spring_security_remember_me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a href="http://localhost:8080/dashboard">UI</a>
+    </form>
+
+</div>
