@@ -1,8 +1,11 @@
 package com.bonvio.staff.controllers;
 
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/")
@@ -41,5 +44,10 @@ public class IndexController {
     public String methodContact() {
         return "index";
     }
+
+    @PreAuthorize("hasRole('Черный')")
+    @ResponseBody
+    @RequestMapping(value = "/banana", method = RequestMethod.GET)
+    public String getBanana() { return "ТОЛЬКО ДЛЯ ЧЕРНЫХ"; }
 
 }

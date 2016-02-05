@@ -4,6 +4,7 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context
@@ -13,7 +14,7 @@
         http://www.springframework.org/schema/data/jpa
 		http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
 		http://www.springframework.org/schema/tx
-		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"        >
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
     <context:component-scan base-package="com.bonvio.staff.*"/>
 
@@ -59,6 +60,68 @@
 
     <!-- JPA Repositories -->
     <jpa:repositories base-package="com.bonvio.staff.dao"></jpa:repositories>
+
+
+
+    <security:global-method-security secured-annotations="enabled"  pre-post-annotations="enabled"/>
+
+    <security:http auto-config="true" use-expressions="true" access-denied-page="/403">
+
+        <!--<intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>-->
+        <!--<intercept-url pattern="/login" access="hasRole('ROLE_ANONYMOUS')"/>-->
+        <!--<intercept-url pattern="/dashboard" access="hasRole('ROLE_USER')"/>-->
+        <!--<intercept-url pattern="/home" access="hasRole('ROLE_ADMIN')"/>-->
+
+        <!--<intercept-url pattern="/favicon.ico" filters="none"/>
+        <intercept-url pattern="/images/**" filters="none"/>
+        -->
+
+        <!--<intercept-url pattern="/resources/**" filters="none"/>-->
+
+        <security:intercept-url pattern="/resources/**" access="isAnonymous()"/>
+
+        <!--<intercept-url pattern="/banana" access="hasRole('black')"/>-->
+
+        <security:intercept-url pattern="/index" access="hasRole(ROLE_ADMIN)"/>
+        <security:intercept-url pattern="/login" access="isAnonymous()"/>
+        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
+
+        <!--<intercept-url pattern="/login" access="hasRole('ROLE_ANONYMOUS')"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>-->
+
+        <security:form-login login-page="/login"
+
+                    default-target-url="/dashboard"
+                    always-use-default-target="true"
+                    authentication-failure-url="/login"/>
+
+        <security:logout logout-url="/logout"
+                logout-success-url="/ticket"
+                delete-cookies="true"
+                invalidate-session="true"/>
+
+        <security:anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
+
+        <!--<remember-me/>-->
+    </security:http>
+
+    <!-- <authentication-manager>
+         <authentication-provider>
+             <user-service>
+                 <user name="admin" password="1111" authorities="ROLE_ANONYMOUS, ROLE_ADMIN, ROLE_USER"/>
+                 <user name="user" password="1111" authorities="ROLE_ANONYMOUS, ROLE_USER"/>
+             </user-service>
+         </authentication-provider>
+     </authentication-manager>-->
+
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="userDetailsService">
+
+            <!--<password-encoder hash="md5" />-->
+        </security:authentication-provider>
+    </security:authentication-manager>
+
 
 
 </beans>

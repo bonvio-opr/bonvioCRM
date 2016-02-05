@@ -20,7 +20,7 @@ import java.util.Set;
 /**
  * Created by niko on 03.06.15.
  */
-@Service ("userDetailsService")
+@Service("userDetailsService")
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         System.out.println("user" + user + user.getUserRole().size());
 
 
-        if(user == null) {
+        if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
 
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     private org.springframework.security.core.userdetails.User buildUserForAuthentication(com.bonvio.staff.models.User user,
-                                            List<GrantedAuthority> authorities) {
+                                                                                          List<GrantedAuthority> authorities) {
         return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(),
                 true, true, true, true, authorities);
     }

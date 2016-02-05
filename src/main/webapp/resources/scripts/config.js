@@ -17,7 +17,7 @@ bonvioCRM.config(function ($stateProvider, $urlRouterProvider, $locationProvider
             url: "/dashboard",
             views: {
                 "topPanel": {templateUrl: "resources/templates/topNav.html"},
-                "contentPanel": {templateUrl: "resources/templates/dashboardPage.html"}
+                "contentPanel": {templateUrl: "resources/templates/dashboard.html"}
             }
         })
 

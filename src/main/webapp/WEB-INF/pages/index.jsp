@@ -31,10 +31,11 @@
 </head>
 <body>
 
-<%--<p>Nothing here {{'yet' + '!'}}</p>--%>
+Я ТУТ
 
-<div ui-view="topPanel"></div>
-<div ui-view="contentPanel"></div>
+
+<%--<div ui-view="topPanel"></div>
+<div ui-view="contentPanel"></div>--%>
 
 <!-- We'll also add some navigation: -->
 <%--<a ui-sref="state1">State 1</a>

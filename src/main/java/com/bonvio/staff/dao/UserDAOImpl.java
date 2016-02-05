@@ -48,18 +48,6 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findByUserName(String username) {
-        List<User> users = entityManager.createQuery("select u from User u where login=:username", User.class)
-                .setParameter("username", username).getResultList();
-
-        System.out.println("users.size = " + users.size());
-
-        if (users.size() > 0){
-
-
-
-            return  users.get(0);
-        }
-
-        return null;
+        return entityManager.createQuery("select u from User u where login=:username", User.class).setParameter("username", username).getSingleResult();
     }
 }
