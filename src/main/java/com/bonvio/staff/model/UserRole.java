@@ -1,4 +1,4 @@
-package com.bonvio.staff.models;
+package com.bonvio.staff.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -1,10 +1,7 @@
-package com.bonvio.staff.models;
+package com.bonvio.staff.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 /**

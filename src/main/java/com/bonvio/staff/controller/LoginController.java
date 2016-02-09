@@ -1,4 +1,4 @@
-package com.bonvio.staff.controllers;
+package com.bonvio.staff.controller;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
